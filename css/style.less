@@ -21,6 +21,12 @@
   background: url(../img/bg.png) top center no-repeat;
 }
 
+.hidden {
+  display: none;
+}
+
+// HEADER
+
 .hello-header__container {
   max-width: 1619px;
   width: 90%;
@@ -79,5 +85,85 @@
 
 .link-zen {
   background-image: url(../img/zen.svg);
+  background-repeat: no-repeat;
+}
+
+// MENU
+
+.hello-menu {
+  position: fixed;
+  left: 0;
+  right: 0;
+
+  height: 92%;
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 20px;
+
+  background-color: #fff;
+  z-index: 999;
+}
+
+.hello-menu__inner {
+  height: 100%;
+
+  display: grid;
+  align-items: center;
+}
+
+.hello-menu__nav {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.hello-menu__btn {
+  color: #000;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+body.active {
+  overflow-y: hidden;
+}
+
+.active .hello-header {
+  background-color: #ffffff;
+}
+
+.active .img-lines {
+  background-image: url(../img/close-black.svg);
+}
+
+.active .logos--filter {
+  filter: invert(1);
+}
+
+.active .link-vk {
+  background-image: url(../img/vk-active.svg);
+  background-repeat: no-repeat;
+}
+
+.active .link-youtube {
+  background-image: url(../img/youtube-active.svg);
+  background-repeat: no-repeat;
+}
+
+.active .link-telegram {
+  background-image: url(../img/telegram-active.svg);
+  background-repeat: no-repeat;
+}
+
+.active .link-zen {
+  background-image: url(../img/zen-active.svg);
   background-repeat: no-repeat;
 }
