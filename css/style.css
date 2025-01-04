@@ -7,76 +7,63 @@
   color: #000000;
   box-sizing: border-box;
 }
-
 .hello-container {
   max-width: 1920px;
   width: 100%;
   margin: 0 auto;
   background-color: #fff;
 }
-
 .hello-bg {
   position: relative;
   height: 1000px;
   background: url(../img/bg.png) top center no-repeat;
 }
-
 .hello-header__container {
   max-width: 1619px;
   width: 90%;
   margin: 0 auto;
   padding: 45px 0 40px;
 }
-
 .hello-header__nav {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
 }
-
 .hello-header__menu {
   display: flex;
   column-gap: 20px;
   align-items: center;
 }
-
 .hello-header__lines {
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 }
-
 .img-lines {
   width: 32px;
   height: 32px;
   background-image: url(../img/lines.svg);
 }
-
 .hello-header__social {
   display: flex;
   column-gap: 20px;
   justify-self: end;
 }
-
 .hello-header__link {
   width: 28px;
   height: 28px;
 }
-
 .link-vk {
   background-image: url(../img/vk.svg);
   background-repeat: no-repeat;
 }
-
 .link-youtube {
   background-image: url(../img/youtube.svg);
   background-repeat: no-repeat;
 }
-
 .link-telegram {
   background-image: url(../img/telegram.svg);
   background-repeat: no-repeat;
 }
-
 .link-zen {
   background-image: url(../img/zen.svg);
   background-repeat: no-repeat;
