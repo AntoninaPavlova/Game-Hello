@@ -10,7 +10,10 @@ const buttonBeginningElement = document.querySelector(".btn--beginning");
 const buttonStandingsElement = document.querySelector(".btn--standings");
 const standingsContainer = document.querySelector(".hello-standings");
 
-const windows = [startContainer, standingsContainer];
+const buttonPlayElement = document.querySelector(".hello-start__btn.btn--play");
+const gameContainer = document.querySelector(".hello-game");
+
+const windows = [startContainer, gameContainer, standingsContainer];
 
 // FUNCTIONS
 // Функция переключения видимости меню
@@ -43,6 +46,12 @@ const showStandingsWindow = () => {
   }
 };
 
+// Функция обработки нажатия кнопки "начать игру"
+const startGame = () => {
+  startContainer.classList.add("hidden");
+  gameContainer.classList.remove("hidden");
+};
+
 // Функция перенаправления на стартовую страницу с кнопок
 const redirectToIndex = () => {
   location.href = "index.html";
@@ -52,3 +61,4 @@ const redirectToIndex = () => {
 linesElement.addEventListener("click", toggleMenuVisibility);
 buttonBeginningElement.addEventListener("click", showStartsWindow);
 buttonStandingsElement.addEventListener("click", showStandingsWindow);
+buttonPlayElement.addEventListener("click", startGame);
