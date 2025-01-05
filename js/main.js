@@ -13,13 +13,23 @@ const standingsContainer = document.querySelector(".hello-standings");
 const buttonPlayElement = document.querySelector(".hello-start__btn.btn--play");
 const gameContainer = document.querySelector(".hello-game");
 
+const timerElement = document.querySelector(".hello-game__timer-time");
+
 const windows = [startContainer, gameContainer, standingsContainer];
+
+let timeLeft = 60;
+let timerId;
 
 // FUNCTIONS
 // Функция переключения видимости меню
 const toggleMenuVisibility = () => {
   menuContainer.classList.toggle("hidden");
   bodyContainer.classList.toggle("active");
+};
+
+// Функция перенаправления на стартовую страницу с кнопок
+const redirectToIndex = () => {
+  location.href = "index.html";
 };
 
 // Функция перенаправления на стартовую страницу из меню
@@ -50,11 +60,34 @@ const showStandingsWindow = () => {
 const startGame = () => {
   startContainer.classList.add("hidden");
   gameContainer.classList.remove("hidden");
+  startTimer();
 };
 
-// Функция перенаправления на стартовую страницу с кнопок
-const redirectToIndex = () => {
-  location.href = "index.html";
+// Функция для запуска таймера
+const startTimer = () => {
+  if (!timerId) {
+    timerId = setInterval(() => {
+      timeLeft--;
+      updateTimer();
+    }, 1000);
+  }
+};
+
+// Функция для обновления таймера на странице
+const updateTimer = () => {
+  const minutes = Math.floor(timeLeft / 60)
+    .toString()
+    .padStart(2, "0");
+  const seconds = (timeLeft % 60).toString().padStart(2, "0");
+
+  if (timerElement) {
+    timerElement.textContent = `${minutes}:${seconds}`;
+  }
+
+  if (timeLeft <= 0) {
+    clearInterval(timerId);
+    // переход на страницу завершения игры
+  }
 };
 
 // LISTENERS
