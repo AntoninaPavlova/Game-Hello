@@ -15,6 +15,8 @@ const gameContainer = document.querySelector(".hello-game");
 
 const timerElement = document.querySelector(".hello-game__timer-time");
 
+const cardsElement = document.querySelector(".hello-game__cards");
+
 const windows = [startContainer, gameContainer, standingsContainer];
 
 let timeLeft = 60;
@@ -61,6 +63,7 @@ const startGame = () => {
   startContainer.classList.add("hidden");
   gameContainer.classList.remove("hidden");
   startTimer();
+  displayCards();
 };
 
 // Функция для запуска таймера
@@ -88,6 +91,34 @@ const updateTimer = () => {
     clearInterval(timerId);
     // переход на страницу завершения игры
   }
+};
+
+// Функция для перемешивание колоды с использованием алгоритма Фишера — Йетса
+const shuffleArray = (array) => {
+  if (!array || array.length === 0) {
+    return array;
+  }
+
+  for (let i = array.length - 1; i > 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
+  }
+
+  return array;
+};
+
+// Функция для отображения колоды карт
+const displayCards = () => {
+  const shuffledCards = shuffleArray(cards);
+  console.log("🚀 ~ displayCards ~ cards:", cards);
+
+  cardsElement.innerHTML = shuffledCards
+    .map((card, index) => {
+      return `<img class="hello-game__card" src="${card.img}" alt="card" style="z-index: ${
+        shuffledCards.length - index
+      };">`;
+    })
+    .join("");
 };
 
 // LISTENERS
