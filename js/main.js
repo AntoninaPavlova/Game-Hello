@@ -16,11 +16,17 @@ const gameContainer = document.querySelector(".hello-game");
 const timerElement = document.querySelector(".hello-game__timer-time");
 
 const cardsElement = document.querySelector(".hello-game__cards");
+const buttonYesElement = document.querySelector(".variant-yes");
+const buttonNoElement = document.querySelector(".variant-no");
 
 const windows = [startContainer, gameContainer, standingsContainer];
 
 let timeLeft = 60;
 let timerId;
+let currentIndex = 0;
+let points = 0;
+let isDragging = false;
+let startX = 0;
 
 // FUNCTIONS
 // Функция переключения видимости меню
@@ -121,8 +127,74 @@ const displayCards = () => {
     .join("");
 };
 
+// Функция для обработки клика вправо
+const handleYesButtonClick = () => {
+  if (currentIndex < cards.length) {
+    if (cards[currentIndex].answer === true) {
+      points++;
+    }
+
+    animateCardRight();
+
+    setTimeout(() => {
+      currentIndex++;
+    }, 500);
+  }
+};
+
+// Функция для обработки клика влево
+const handleNoButtonClick = () => {
+  if (currentIndex < cards.length) {
+    if (cards[currentIndex].answer === false) {
+      points++;
+    }
+
+    animateCardLeft();
+
+    setTimeout(() => {
+      currentIndex++;
+    }, 500);
+  }
+};
+
+// Функция для анимации карты вправо
+const animateCardRight = () => {
+  const cardElement = document.querySelector(".hello-game__card");
+  if (cardElement) {
+    cardElement.classList.add("slide-out-right");
+
+    cardElement.addEventListener("animationend", () => {
+      cardElement.classList.remove("slide-out-right");
+      deleteCard();
+    });
+  }
+};
+
+// Функция для анимации карты влево
+const animateCardLeft = () => {
+  const cardElement = document.querySelector(".hello-game__card");
+  if (cardElement) {
+    cardElement.classList.add("slide-out-left");
+
+    cardElement.addEventListener("animationend", () => {
+      cardElement.classList.remove("slide-out-left");
+      deleteCard();
+    });
+  }
+};
+
+// Функция для удаления карты
+const deleteCard = () => {
+  const cardElement = document.querySelector(".hello-game__card");
+  if (cardElement) {
+    cardElement.remove();
+  }
+};
+
 // LISTENERS
 linesElement.addEventListener("click", toggleMenuVisibility);
 buttonBeginningElement.addEventListener("click", showStartsWindow);
 buttonStandingsElement.addEventListener("click", showStandingsWindow);
 buttonPlayElement.addEventListener("click", startGame);
+buttonYesElement.addEventListener("click", handleYesButtonClick);
+buttonNoElement.addEventListener("click", handleNoButtonClick);

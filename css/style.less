@@ -464,3 +464,34 @@ body.active {
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(50px);
 }
+
+// АНИМАЦИЯ 
+.slide-out-right {
+  animation: slide-out-right 0.5s forwards;
+}
+
+.slide-out-left {
+  animation: slide-out-left 0.5s forwards;
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-out-left {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
