@@ -24,6 +24,8 @@ const pointsElement = document.querySelector(".hello-game__csores-points");
 const currentNumberElement = document.querySelector(".hello-game__current");
 const totalElement = document.querySelector(".hello-game__total");
 
+const resultContainer = document.querySelector(".hello-result");
+
 const windows = [startContainer, gameContainer, standingsContainer];
 
 let timeLeft = 60;
@@ -98,8 +100,7 @@ const updateTimer = () => {
   }
 
   if (timeLeft <= 0) {
-    clearInterval(timerId);
-    // переход на страницу завершения игры
+    overGame();
   }
 };
 
@@ -203,7 +204,7 @@ const updateCard = () => {
   if (currentIndex < cards.length) {
     updateQuantityСards();
   } else {
-    // завершаем игру
+    overGame();
   }
 };
 
@@ -219,6 +220,15 @@ const updateQuantityСards = () => {
   if (currentNumberElement && totalElement) {
     currentNumberElement.textContent = currentIndex + 1;
     totalElement.textContent = cards.length;
+  }
+};
+
+// Функция для завершения игры
+const overGame = () => {
+  clearInterval(timerId);
+  if (gameContainer && resultContainer) {
+    gameContainer.classList.add("hidden");
+    resultContainer.classList.remove("hidden");
   }
 };
 
