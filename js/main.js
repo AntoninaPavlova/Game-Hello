@@ -19,14 +19,17 @@ const cardsElement = document.querySelector(".hello-game__cards");
 const buttonYesElement = document.querySelector(".variant-yes");
 const buttonNoElement = document.querySelector(".variant-no");
 
+const pointsElement = document.querySelector(".hello-game__csores-points");
+
+const currentNumberElement = document.querySelector(".hello-game__current");
+const totalElement = document.querySelector(".hello-game__total");
+
 const windows = [startContainer, gameContainer, standingsContainer];
 
 let timeLeft = 60;
 let timerId;
 let currentIndex = 0;
 let points = 0;
-let isDragging = false;
-let startX = 0;
 
 // FUNCTIONS
 // Функция переключения видимости меню
@@ -69,6 +72,7 @@ const startGame = () => {
   startContainer.classList.add("hidden");
   gameContainer.classList.remove("hidden");
   startTimer();
+  updatePoints();
   displayCards();
 };
 
@@ -138,7 +142,9 @@ const handleYesButtonClick = () => {
 
     setTimeout(() => {
       currentIndex++;
-    }, 500);
+      updateCard();
+      updatePoints();
+    }, 200);
   }
 };
 
@@ -153,7 +159,9 @@ const handleNoButtonClick = () => {
 
     setTimeout(() => {
       currentIndex++;
-    }, 500);
+      updateCard();
+      updatePoints();
+    }, 200);
   }
 };
 
@@ -165,7 +173,6 @@ const animateCardRight = () => {
 
     cardElement.addEventListener("animationend", () => {
       cardElement.classList.remove("slide-out-right");
-      deleteCard();
     });
   }
 };
@@ -178,7 +185,6 @@ const animateCardLeft = () => {
 
     cardElement.addEventListener("animationend", () => {
       cardElement.classList.remove("slide-out-left");
-      deleteCard();
     });
   }
 };
@@ -188,6 +194,31 @@ const deleteCard = () => {
   const cardElement = document.querySelector(".hello-game__card");
   if (cardElement) {
     cardElement.remove();
+  }
+};
+
+// Функция для обновления текущей карты
+const updateCard = () => {
+  deleteCard();
+  if (currentIndex < cards.length) {
+    updateQuantityСards();
+  } else {
+    // завершаем игру
+  }
+};
+
+// Функция для обновления баллов
+const updatePoints = () => {
+  if (pointsElement) {
+    pointsElement.textContent = points;
+  }
+};
+
+// Функция для обновления количества карточек
+const updateQuantityСards = () => {
+  if (currentNumberElement && totalElement) {
+    currentNumberElement.textContent = currentIndex + 1;
+    totalElement.textContent = cards.length;
   }
 };
 

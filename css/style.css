@@ -83,7 +83,7 @@
   margin: 0 auto;
   padding: 40px 20px;
   background-color: #fff;
-  z-index: 2;
+  z-index: 999;
 }
 .hello-menu__inner {
   height: 100%;
