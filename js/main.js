@@ -31,7 +31,12 @@ const numberElement = document.querySelector(".hello-result__number");
 const promocodeElement = document.querySelector(".hello-result__promocode");
 const promotextElement = document.querySelector(".hello-result__promotext");
 
-const windows = [startContainer, gameContainer, standingsContainer];
+const startOverBtnElement = document.querySelector(".hello-result__btn.btn--play");
+
+const buttonRegistrateElement = document.querySelector(".btn--registrate");
+const registrationContainer = document.querySelector(".hello-registration");
+
+const windows = [startContainer, gameContainer, resultContainer, registrationContainer, standingsContainer];
 
 let timeLeft = 7;
 let timerId;
@@ -143,7 +148,7 @@ const displayCards = () => {
 const handleYesButtonClick = () => {
   if (currentIndex < cards.length) {
     if (cards[currentIndex].answer === true) {
-      points += 10;
+      points++;
     }
 
     animateCardRight();
@@ -160,7 +165,7 @@ const handleYesButtonClick = () => {
 const handleNoButtonClick = () => {
   if (currentIndex < cards.length) {
     if (cards[currentIndex].answer === false) {
-      points += 10;
+      points++;
     }
 
     animateCardLeft();
@@ -265,6 +270,14 @@ const showTicket = () => {
   }
 };
 
+// Функция показа окна с регистрацией
+const showRegistrationWindow = () => {
+  if (resultContainer && registrationContainer) {
+    resultContainer.classList.add("hidden");
+    registrationContainer.classList.remove("hidden");
+  }
+};
+
 // LISTENERS
 linesElement.addEventListener("click", toggleMenuVisibility);
 buttonBeginningElement.addEventListener("click", showStartsWindow);
@@ -272,3 +285,5 @@ buttonStandingsElement.addEventListener("click", showStandingsWindow);
 buttonPlayElement.addEventListener("click", startGame);
 buttonYesElement.addEventListener("click", handleYesButtonClick);
 buttonNoElement.addEventListener("click", handleNoButtonClick);
+startOverBtnElement.addEventListener("click", redirectToIndex);
+buttonRegistrateElement.addEventListener("click", showRegistrationWindow);
