@@ -28,12 +28,17 @@ const resultContainer = document.querySelector(".hello-result");
 
 const numberElement = document.querySelector(".hello-result__number");
 
+const promocodeElement = document.querySelector(".hello-result__promocode");
+const promotextElement = document.querySelector(".hello-result__promotext");
+
 const windows = [startContainer, gameContainer, standingsContainer];
 
 let timeLeft = 7;
 let timerId;
 let currentIndex = 0;
 let points = 0;
+let promoCode = "";
+let promoText = "";
 
 // FUNCTIONS
 // Функция переключения видимости меню
@@ -138,7 +143,7 @@ const displayCards = () => {
 const handleYesButtonClick = () => {
   if (currentIndex < cards.length) {
     if (cards[currentIndex].answer === true) {
-      points++;
+      points += 10;
     }
 
     animateCardRight();
@@ -155,7 +160,7 @@ const handleYesButtonClick = () => {
 const handleNoButtonClick = () => {
   if (currentIndex < cards.length) {
     if (cards[currentIndex].answer === false) {
-      points++;
+      points += 10;
     }
 
     animateCardLeft();
@@ -213,8 +218,8 @@ const updateCard = () => {
 // Функция для обновления баллов
 const updatePoints = () => {
   if (pointsElement && numberElement) {
-    pointsElement.textContent = points * 10;
-    numberElement.textContent = points * 10;
+    pointsElement.textContent = points;
+    numberElement.textContent = points;
   }
 };
 
@@ -229,9 +234,34 @@ const updateQuantityСards = () => {
 // Функция для завершения игры
 const overGame = () => {
   clearInterval(timerId);
+
   if (gameContainer && resultContainer) {
     gameContainer.classList.add("hidden");
     resultContainer.classList.remove("hidden");
+  }
+
+  showTicket();
+};
+
+//  Функция отображает, какой промокод и текст должны быть показаны на экране в зависимости от количества набранных очков
+const showTicket = () => {
+  if (points >= 0 && points < 10 && ticket) {
+    promoCode = ticket[10].promocode;
+    promoText = ticket[10].promotext;
+  } else if (points >= 10 && points < 30 && ticket) {
+    promoCode = ticket[30].promocode;
+    promoText = ticket[30].promotext;
+  } else if (points >= 30 && points < 50 && ticket) {
+    promoCode = ticket[50].promocode;
+    promoText = ticket[50].promotext;
+  } else if (points >= 50 && points < 70 && ticket) {
+    promoCode = ticket[70].promocode;
+    promoText = ticket[70].promotext;
+  }
+
+  if (promocodeElement && promotextElement) {
+    promocodeElement.innerHTML = promoCode;
+    promotextElement.innerHTML = promoText;
   }
 };
 
