@@ -26,9 +26,11 @@ const totalElement = document.querySelector(".hello-game__total");
 
 const resultContainer = document.querySelector(".hello-result");
 
+const numberElement = document.querySelector(".hello-result__number");
+
 const windows = [startContainer, gameContainer, standingsContainer];
 
-let timeLeft = 60;
+let timeLeft = 7;
 let timerId;
 let currentIndex = 0;
 let points = 0;
@@ -210,8 +212,9 @@ const updateCard = () => {
 
 // Функция для обновления баллов
 const updatePoints = () => {
-  if (pointsElement) {
-    pointsElement.textContent = points;
+  if (pointsElement && numberElement) {
+    pointsElement.textContent = points * 10;
+    numberElement.textContent = points * 10;
   }
 };
 
