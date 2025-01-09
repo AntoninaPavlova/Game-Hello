@@ -4,35 +4,24 @@
 const linesElement = document.querySelector(".hello-header__lines");
 const menuContainer = document.querySelector(".hello-menu");
 const bodyContainer = document.querySelector("body");
-
 const startContainer = document.querySelector(".hello-start");
 const buttonBeginningElement = document.querySelector(".btn--beginning");
 const buttonStandingsElement = document.querySelector(".btn--standings");
 const standingsContainer = document.querySelector(".hello-standings");
-
 const buttonPlayElement = document.querySelector(".hello-start__btn.btn--play");
 const gameContainer = document.querySelector(".hello-game");
-
 const timerElement = document.querySelector(".hello-game__timer-time");
-
 const cardsElement = document.querySelector(".hello-game__cards");
 const buttonYesElement = document.querySelector(".variant-yes");
 const buttonNoElement = document.querySelector(".variant-no");
-
 const pointsElement = document.querySelector(".hello-game__csores-points");
-
 const currentNumberElement = document.querySelector(".hello-game__current");
 const totalElement = document.querySelector(".hello-game__total");
-
 const resultContainer = document.querySelector(".hello-result");
-
 const numberElement = document.querySelector(".hello-result__number");
-
 const promocodeElement = document.querySelector(".hello-result__promocode");
 const promotextElement = document.querySelector(".hello-result__promotext");
-
 const startOverBtnElement = document.querySelector(".hello-result__btn.btn--play");
-
 const buttonRegistrateElement = document.querySelector(".btn--registrate");
 const registrationContainer = document.querySelector(".hello-registration");
 
