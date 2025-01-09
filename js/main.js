@@ -24,8 +24,17 @@ const promotextElement = document.querySelector(".hello-result__promotext");
 const startOverBtnElement = document.querySelector(".hello-result__btn.btn--play");
 const buttonRegistrateElement = document.querySelector(".btn--registrate");
 const registrationContainer = document.querySelector(".hello-registration");
+const buttonFindOutResultElement = document.querySelectorAll(".btn--find-out-result");
+const findOutResultContainer = document.querySelector(".hello-find-out-result");
 
-const windows = [startContainer, gameContainer, resultContainer, registrationContainer, standingsContainer];
+const windows = [
+  startContainer,
+  gameContainer,
+  resultContainer,
+  registrationContainer,
+  standingsContainer,
+  findOutResultContainer,
+];
 
 let timeLeft = 7;
 let timerId;
@@ -267,6 +276,19 @@ const showRegistrationWindow = () => {
   }
 };
 
+// Функция показа окна с очками
+const showPointsWindow = () => {
+  windows.forEach((window) => {
+    if (window && window !== findOutResultContainer) {
+      window.classList.add("hidden");
+    }
+  });
+
+  if (findOutResultContainer) {
+    findOutResultContainer.classList.remove("hidden");
+  }
+};
+
 // LISTENERS
 linesElement.addEventListener("click", toggleMenuVisibility);
 buttonBeginningElement.addEventListener("click", showStartsWindow);
@@ -276,3 +298,6 @@ buttonYesElement.addEventListener("click", handleYesButtonClick);
 buttonNoElement.addEventListener("click", handleNoButtonClick);
 startOverBtnElement.addEventListener("click", redirectToIndex);
 buttonRegistrateElement.addEventListener("click", showRegistrationWindow);
+buttonFindOutResultElement.forEach((button) => {
+  button.addEventListener("click", showPointsWindow);
+});

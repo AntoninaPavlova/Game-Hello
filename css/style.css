@@ -431,7 +431,8 @@ body.active {
 }
 .hello-result__container,
 .hello-registration__container,
-.hello-standings__container {
+.hello-standings__container,
+.hello-find-out-result__container {
   width: 100%;
   display: grid;
 }
@@ -444,7 +445,8 @@ body.active {
 }
 .hello-result__title,
 .hello-registration__title,
-.hello-standings__title {
+.hello-standings__title,
+.hello-find-out-result__title {
   color: #fff;
   font-size: 64px;
   font-style: normal;
@@ -453,7 +455,8 @@ body.active {
 }
 .hello-result__title,
 .hello-registration__title,
-.hello-standings__title {
+.hello-standings__title,
+.hello-find-out-result__title {
   text-align: center;
 }
 .hello-result__text {
@@ -576,7 +579,8 @@ body.active {
 .hello-registration__field:nth-last-of-type(1) {
   margin-bottom: 0;
 }
-.hello-registration__input {
+.hello-registration__input,
+.hello-find-out-result__input {
   width: 100%;
   padding: 10px;
   font-weight: 500;
@@ -588,7 +592,8 @@ body.active {
   border-bottom: 1px solid #fff;
   background-color: transparent;
 }
-.hello-registration__label {
+.hello-registration__label,
+.hello-find-out-result__label {
   position: absolute;
   bottom: 10px;
   left: 100px;
@@ -597,11 +602,13 @@ body.active {
   transition: all 0.25s ease;
   opacity: 0;
 }
-.hello-registration__input:placeholder-shown ~ .hello-registration__label {
+.hello-registration__input:placeholder-shown ~ .hello-registration__label,
+.hello-find-out-result__input:placeholder-shown ~ .hello-find-out-result__label {
   left: 10px;
   opacity: 1;
 }
-.hello-registration__input::placeholder {
+.hello-registration__input::placeholder,
+.hello-find-out-result__input::placeholder {
   color: transparent;
 }
 .hello-registration__consent {
@@ -641,7 +648,8 @@ body.active {
   background-size: 12px;
 }
 .hello-registration__btn,
-.hello-standings__btn {
+.hello-standings__btn,
+.hello-find-out-result__btn {
   max-width: 514px;
   width: 100%;
   height: 60px;
@@ -698,4 +706,35 @@ body.active {
 }
 .row--board {
   color: #fff;
+}
+.hello-find-out-result {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+.hello-find-out-result__container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.hello-find-out-result__title {
+  margin-bottom: 48px;
+}
+.hello-find-out-result__form {
+  max-width: 514px;
+  width: 100%;
+  margin: 0 auto;
+}
+.hello-find-out-result__field {
+  position: relative;
+  margin-bottom: 44px;
+}
+.input--center {
+  text-align: center;
+}
+.input--center:placeholder-shown ~ .label--center {
+  left: 50%;
+  text-align: center;
+  transform: translateX(-50%);
 }
