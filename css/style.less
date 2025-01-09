@@ -503,7 +503,8 @@ body.active {
 
 .hello-result__inner,
 .hello-registration__inner,
-.hello-standings__inner {
+.hello-standings__inner,
+.hello-app__inner {
   position: relative;
   max-width: 1619px;
   width: 90%;
@@ -558,7 +559,8 @@ body.active {
 .hello-result__title,
 .hello-registration__title,
 .hello-standings__title,
-.hello-find-out-result__title {
+.hello-find-out-result__title,
+.hello-app__title {
   color: #fff;
   font-size: 64px;
   font-style: normal;
@@ -573,12 +575,13 @@ body.active {
   text-align: center;
 }
 
-.hello-result__text {
+.hello-result__text,
+.hello-app__text {
   color: rgba(255, 255, 255, 0.7);
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
-  line-height: normal;
+  line-height: 21px;
 }
 
 .hello-result__text {
@@ -925,4 +928,51 @@ body.active {
   text-align: center;
 
   transform: translateX(-50%);
+}
+
+// APP
+
+.hello-app {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;
+}
+
+.hello-app__container {
+  display: grid;
+  grid-template-columns: 44% 51%;
+  column-gap: 88px;
+}
+
+.hello-app__content {
+  max-width: 530px;
+  width: 100%;
+  margin: 0 auto 0 0;
+  padding-top: 87px;
+
+  text-align: left;
+}
+
+.hello-app__title {
+  margin-bottom: 28px;
+}
+
+.hello-app__text {
+  max-width: 402px;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.hello-app__variants {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hello-qr__links {
+  display: flex;
+  flex-direction: column;
 }

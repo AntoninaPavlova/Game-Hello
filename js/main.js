@@ -26,6 +26,8 @@ const buttonRegistrateElement = document.querySelector(".btn--registrate");
 const registrationContainer = document.querySelector(".hello-registration");
 const buttonFindOutResultElement = document.querySelectorAll(".btn--find-out-result");
 const findOutResultContainer = document.querySelector(".hello-find-out-result");
+const buttonReceiveCardElement = document.querySelectorAll(".btn--receive");
+const receiveCardContainer = document.querySelector(".hello-app");
 
 const windows = [
   startContainer,
@@ -34,6 +36,7 @@ const windows = [
   registrationContainer,
   standingsContainer,
   findOutResultContainer,
+  receiveCardContainer,
 ];
 
 let timeLeft = 7;
@@ -289,6 +292,19 @@ const showPointsWindow = () => {
   }
 };
 
+// Функция показа окна с ссылками на приложения
+const showAppWindow = () => {
+  windows.forEach((window) => {
+    if (window && window !== receiveCardContainer) {
+      window.classList.add("hidden");
+    }
+  });
+
+  if (receiveCardContainer) {
+    receiveCardContainer.classList.remove("hidden");
+  }
+};
+
 // LISTENERS
 linesElement.addEventListener("click", toggleMenuVisibility);
 buttonBeginningElement.addEventListener("click", showStartsWindow);
@@ -300,4 +316,7 @@ startOverBtnElement.addEventListener("click", redirectToIndex);
 buttonRegistrateElement.addEventListener("click", showRegistrationWindow);
 buttonFindOutResultElement.forEach((button) => {
   button.addEventListener("click", showPointsWindow);
+});
+buttonReceiveCardElement.forEach((button) => {
+  button.addEventListener("click", showAppWindow);
 });
