@@ -39,7 +39,7 @@ const windows = [
   receiveCardContainer,
 ];
 
-let timeLeft = 7;
+let timeLeft = 700;
 let timerId;
 let currentIndex = 0;
 let points = 0;
@@ -134,7 +134,6 @@ const shuffleArray = (array) => {
 // Функция для отображения колоды карт
 const displayCards = () => {
   const shuffledCards = shuffleArray(cards);
-  console.log("🚀 ~ displayCards ~ cards:", cards);
 
   cardsElement.innerHTML = shuffledCards
     .map((card, index) => {
