@@ -45,6 +45,9 @@ let currentIndex = 0;
 let points = 0;
 let promoCode = "";
 let promoText = "";
+let isTouchStart = false;
+let swipe = 0;
+let prevTouch = null;
 
 // FUNCTIONS
 // Функция переключения видимости меню
@@ -304,6 +307,48 @@ const showAppWindow = () => {
   }
 };
 
+// Функция вызывается, когда начинается нажатие мыши или касание экрана.
+const handleMouseDown = (e) => {
+  if (e.touches === undefined) {
+    e.preventDefault();
+  }
+  isTouchStart = true;
+  prevTouch = e.type === "mousedown" ? { pageX: e.pageX } : { pageX: e.touches[0].pageX };
+};
+
+// Функция вызывается, когда заканчивается нажатие мыши или касание экрана.
+const handleMouseUp = (e) => {
+  isTouchStart = false;
+
+  if (swipe > 50) {
+    handleYesButtonClick();
+  } else if (swipe < -50) {
+    handleNoButtonClick();
+  }
+
+  swipe = 0;
+  prevTouch = null;
+};
+
+// Функция вызывается, когда происходит движение мыши.
+const handleMouseMove = (e) => {
+  if (isTouchStart) {
+    swipe += e.movementX || 0;
+  }
+};
+
+// Функция вызывается, когда происходит движение касания.
+const handleTouchMove = (e) => {
+  const touch = e.touches[0];
+
+  if (prevTouch && isTouchStart) {
+    e.movementX = Math.trunc(touch.pageX - prevTouch.pageX);
+    swipe += e.movementX || 0;
+  }
+
+  prevTouch = touch;
+};
+
 // LISTENERS
 linesElement.addEventListener("click", toggleMenuVisibility);
 buttonBeginningElement.addEventListener("click", showStartsWindow);
@@ -319,3 +364,9 @@ buttonFindOutResultElement.forEach((button) => {
 buttonReceiveCardElement.forEach((button) => {
   button.addEventListener("click", showAppWindow);
 });
+cardsElement.addEventListener("mousedown", handleMouseDown);
+cardsElement.addEventListener("mouseup", handleMouseUp);
+cardsElement.addEventListener("mousemove", handleMouseMove);
+cardsElement.addEventListener("touchstart", handleMouseDown);
+cardsElement.addEventListener("touchend", handleMouseUp);
+cardsElement.addEventListener("touchmove", handleTouchMove);
