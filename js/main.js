@@ -160,7 +160,7 @@ const handleYesButtonClick = () => {
       currentIndex++;
       updateCard();
       updatePoints();
-    }, 200);
+    }, 400);
   }
 };
 
@@ -177,7 +177,7 @@ const handleNoButtonClick = () => {
       currentIndex++;
       updateCard();
       updatePoints();
-    }, 200);
+    }, 400);
   }
 };
 

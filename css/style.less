@@ -470,34 +470,30 @@ body.active {
 
 // ANIMATION CARD
 
+@keyframes slide-out-right {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateX(100vw) rotate(360deg);
+  }
+}
+
+@keyframes slide-out-left {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-100vw) rotate(-360deg);
+  }
+}
+
 .slide-out-right {
   animation: slide-out-right 0.5s forwards;
 }
 
 .slide-out-left {
   animation: slide-out-left 0.5s forwards;
-}
-
-@keyframes slide-out-right {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
-
-@keyframes slide-out-left {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
 }
 
 // RESULT
