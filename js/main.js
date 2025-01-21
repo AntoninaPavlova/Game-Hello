@@ -39,7 +39,7 @@ const windows = [
   receiveCardContainer,
 ];
 
-let timeLeft = 60;
+let timeLeft = 10;
 let timerId;
 let currentIndex = 0;
 let points = 0;
