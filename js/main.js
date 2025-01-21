@@ -307,17 +307,14 @@ const showAppWindow = () => {
   }
 };
 
-// Функция вызывается, когда начинается нажатие мыши или касание экрана.
-const handleMouseDown = (e) => {
-  if (e.touches === undefined) {
-    e.preventDefault();
-  }
+// Функция вызывается, когда начинается касание экрана.
+const handleTouchStart = (e) => {
   isTouchStart = true;
-  prevTouch = e.type === "mousedown" ? { pageX: e.pageX } : { pageX: e.touches[0].pageX };
+  prevTouch = { pageX: e.touches[0].pageX };
 };
 
-// Функция вызывается, когда заканчивается нажатие мыши или касание экрана.
-const handleMouseUp = (e) => {
+// Функция вызывается, когда заканчивается касание экрана.
+const handleTouchEnd = () => {
   isTouchStart = false;
 
   if (swipe > 50) {
@@ -330,20 +327,13 @@ const handleMouseUp = (e) => {
   prevTouch = null;
 };
 
-// Функция вызывается, когда происходит движение мыши.
-const handleMouseMove = (e) => {
-  if (isTouchStart) {
-    swipe += e.movementX || 0;
-  }
-};
-
 // Функция вызывается, когда происходит движение касания.
 const handleTouchMove = (e) => {
   const touch = e.touches[0];
 
   if (prevTouch && isTouchStart) {
-    e.movementX = Math.trunc(touch.pageX - prevTouch.pageX);
-    swipe += e.movementX || 0;
+    const movementX = touch.pageX - prevTouch.pageX;
+    swipe += movementX;
   }
 
   prevTouch = touch;
@@ -364,9 +354,6 @@ buttonFindOutResultElement.forEach((button) => {
 buttonReceiveCardElement.forEach((button) => {
   button.addEventListener("click", showAppWindow);
 });
-cardsElement.addEventListener("mousedown", handleMouseDown);
-cardsElement.addEventListener("mouseup", handleMouseUp);
-cardsElement.addEventListener("mousemove", handleMouseMove);
-cardsElement.addEventListener("touchstart", handleMouseDown);
-cardsElement.addEventListener("touchend", handleMouseUp);
+cardsElement.addEventListener("touchstart", handleTouchStart);
+cardsElement.addEventListener("touchend", handleTouchEnd);
 cardsElement.addEventListener("touchmove", handleTouchMove);
