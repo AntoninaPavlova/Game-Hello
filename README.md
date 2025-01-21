@@ -75,6 +75,6 @@ classList.toggle() - добавлять и убирать класс, classList.
 
 ## Установка и запуск
 
-1. Склонируйте репозиторий на свой компьютер: git clone https://github.com/AntoninaPavlova/Vue3-ToDo.git
+1. Склонируйте репозиторий на свой компьютер: git clone https://github.com/AntoninaPavlova/Game-Hello.git
 2. После загрузки разархивируйте
 3. Запустите файл index.html
